@@ -2,22 +2,22 @@
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import '../styles/treeview.css'; // Import the CSS file
+import '../styles/treeview.css'; 
 
 export default function Treeview() {
   const [godowns, setGodowns] = useState([]);
   const [selectedGodown, setSelectedGodown] = useState(null);
   const [items, setItems] = useState([]);
-  const [openChildGodowns, setOpenChildGodowns] = useState({}); // State to track open child godowns
+  const [openChildGodowns, setOpenChildGodowns] = useState({}); 
 
   useEffect(() => {
-    // Fetch all godowns
+    
     axios.get('http://localhost:3001/api/godowns').then((response) => {
       setGodowns(response.data);
     });
   }, []);
 
-  // Fetch items when a godown is selected
+  
   const handleSelectGodown = (id) => {
     axios.get(`http://localhost:3001/api/items/${id}`).then((response) => {
       setItems(response.data);
@@ -25,29 +25,29 @@ export default function Treeview() {
     setSelectedGodown(id);
   };
 
-  // Toggle child godowns visibility
+ 
   const toggleChildGodowns = (id) => {
     if (openChildGodowns[id]) {
-      // Close the child godowns if they are already open
+      
       setOpenChildGodowns((prevState) => ({
         ...prevState,
         [id]: false,
       }));
     } else {
-      // Fetch child godowns and open them
+    
       axios.get(`http://localhost:3001/api/child-godowns/${id}`).then((response) => {
         const childGodowns = response.data;
         setGodowns((prevGodowns) =>
           prevGodowns.map((godown) => {
             if (godown.id === id) {
-              return { ...godown, childGodowns }; // Add child godowns to the parent
+              return { ...godown, childGodowns }; 
             }
             return godown;
           })
         );
         setOpenChildGodowns((prevState) => ({
           ...prevState,
-          [id]: true, // Set the godown as open
+          [id]: true, 
         }));
       });
     }
@@ -65,7 +65,7 @@ export default function Treeview() {
             >
               {godown.name}
             </div>
-            {/* Render child godowns if open */}
+         
             {openChildGodowns[godown.id] && godown.childGodowns && (
               <div className="child-godowns">
                 {godown.childGodowns.map((child) => (
@@ -77,9 +77,7 @@ export default function Treeview() {
             )}
           </div>
         ))}
-      </div>
-
-      <div className="item-details">
+      </div><div className="item-details">
         <h3>Item Details</h3>
         <div className="items-grid">
           {items.map((item) => (
@@ -98,5 +96,5 @@ export default function Treeview() {
         </div>
       </div>
     </div>
-  );
+  );    
 }
