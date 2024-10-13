@@ -1,4 +1,4 @@
-/* Overall layout */
+
 .treeview-container {
     display: flex;
     font-family: Arial, sans-serif;
@@ -7,7 +7,7 @@
     padding: 20px;
   }
   
-  /* Sidebar styles */
+  
   .sidebar {
     width: 30%;
     background-color: #2c3e50;
@@ -15,8 +15,8 @@
     color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 100vh; /* Full viewport height */
-    overflow-y: auto; /* Enable vertical scrolling */
+    height: 100vh;
+    overflow-y: auto; 
   }
   
   h3 {
@@ -26,7 +26,7 @@
     padding-bottom: 10px;
   }
   
-  /* Godown items */
+  
   .godown {
     padding: 10px;
     cursor: pointer;
@@ -54,7 +54,7 @@
     color: #1abc9c;
   }
   
-  /* Item details section */
+
   .item-details {
     width: 70%;
     padding: 20px;
@@ -62,8 +62,8 @@
     border-radius: 10px;
     margin-left: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 100vh; /* Full viewport height */
-    overflow-y: auto; /* Enable vertical scrolling for the item details section */
+    height: 100vh; 
+    overflow-y: auto; 
   }
   
   .items-grid {
@@ -73,7 +73,7 @@
     margin-top: 20px;
   }
   
-  /* Item card */
+ 
   .item-card {
     background-color: #ffffff;
     border-radius: 10px;
