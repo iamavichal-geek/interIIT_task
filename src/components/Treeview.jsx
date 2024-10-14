@@ -12,14 +12,14 @@ export default function Treeview() {
 
   useEffect(() => {
     
-    axios.get('http://localhost:3001/api/godowns').then((response) => {
+    axios.get('https://warehouse-pearl.vercel.app/api/godowns').then((response) => {
       setGodowns(response.data);
     });
   }, []);
 
   
   const handleSelectGodown = (id) => {
-    axios.get(`http://localhost:3001/api/items/${id}`).then((response) => {
+    axios.get(`https://warehouse-pearl.vercel.app/api/items/${id}`).then((response) => {
       setItems(response.data);
     });
     setSelectedGodown(id);
@@ -35,7 +35,7 @@ export default function Treeview() {
       }));
     } else {
     
-      axios.get(`http://localhost:3001/api/child-godowns/${id}`).then((response) => {
+      axios.get(`https://warehouse-pearl.vercel.app/api/child-godowns/${id}`).then((response) => {
         const childGodowns = response.data;
         setGodowns((prevGodowns) =>
           prevGodowns.map((godown) => {
